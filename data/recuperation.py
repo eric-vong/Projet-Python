@@ -50,3 +50,11 @@ df3 = donnees.geometry
 df3 = df3.to_crs(epsg=2154)
 
 donnees['superficie_quartier'] = df3.area.div(10**6)  #La division convertit les m² en km²
+
+
+
+"""
+4. Export des données
+"""
+
+donnees.to_file("donnees.geojson", driver="GeoJSON",encoding = 'utf-8')

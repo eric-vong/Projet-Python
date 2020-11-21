@@ -38,7 +38,7 @@ urls = ['https://fr.wikipedia.org/wiki/Liste_des_stations_du_m%C3%A9tro_de_Paris
 for url in urls : 
 
     sock = urllib.request.urlopen(url).read() 
-    page=bs4.BeautifulSoup(sock)
+    page=bs4.BeautifulSoup(sock,features="lxml")
 
     liste_stations = page.find('table').findAll('tr')
     
@@ -51,7 +51,7 @@ for url in urls :
         url_station = "http://fr.wikipedia.org"+station.find('a').get('href')
     
         search = urllib.request.urlopen(url_station).read()
-        search_station=bs4.BeautifulSoup(search)
+        search_station=bs4.BeautifulSoup(search,features="lxml")
     
         coord = search_station.find('a',{'class': "mw-kartographer-maplink"}).text
         lat,lng = dms_to_dd(coord)
@@ -96,7 +96,7 @@ frequentation = [309.36,165.5,140,145,60]
 
 #Pour le métro, il existe directement un classement sur Wikipédia :
 sock = urllib.request.urlopen("https://fr.wikipedia.org/wiki/Liste_des_lignes_de_m%C3%A9tro_parisiennes_par_fr%C3%A9quentation").read() 
-page=bs4.BeautifulSoup(sock)
+page=bs4.BeautifulSoup(sock,features="lxml")
 
 liste_lignes = page.find('table').findAll('tr')
 
@@ -123,6 +123,15 @@ quartiers_freq = lignes_quartiers_freq[['c_qu','fréquentation']].groupby('c_qu'
 m = max(quartiers_freq['fréquentation'])
 quartiers_freq['fréquentation'] = quartiers_freq['fréquentation']/m
 
-#Ajout du score à la base de données globale :
+
+
+""" 
+5. Ajout du score à la base de données et export de la base de données augmentée
+"""
+
+donnees = gpd.read_file("donnees.geojson")
+
 donnees_augmentees = donnees.join(quartiers_freq, on='id_quartier')
 donnees_augmentees.rename(columns={'fréquentation': 'score_metro'}, inplace=True)
+
+donnees_augmentees.to_file("donnees_augmentees.geojson", driver="GeoJSON",encoding = 'utf-8')
