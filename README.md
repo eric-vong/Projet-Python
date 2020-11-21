@@ -9,4 +9,4 @@ L'objet de ce projet est donc de répondre à la problématique suivante : Quels
 
 STRUCTURE DU CODE : 
 
-1) data : dossier contenant la base de données utilisée, ainsi que les fonctions ayant permis de la construire.  
+1) data : dossier contenant les codes ayant permis de récolter (recuperation.py) et enrichir (ajout_score_metro.py) les données.   
