@@ -1,4 +1,4 @@
-##### Projet Python pour le Data Scientist #####
+# Projet Python pour le Data Scientist 
 
 Projet réalisé par Eric Vong, Thibaut Valour et Solène Blasco Lopez
 
