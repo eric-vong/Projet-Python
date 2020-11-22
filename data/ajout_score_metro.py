@@ -4,8 +4,8 @@ Enrichissement de la base de données récupérée dans recuperation.py
 Ajout d'une variable score_metro calculée de la manière suivante :
     - on liste les lignes distinctes de métro et de rer qui passent dans chaque quartier
     - on attribue un score à chaque ligne, qui correspond à sa fréquentation annuelle 
-    - le somme pour chaque quartier les scores de ses lignes de métro/rer
-    - Le score d'un quartier correspond alors à cette somme, divisée par la plus grande valeur attribuée à un quartier
+    - on somme pour chaque quartier les scores de ses lignes de métro/rer
+    - le score d'un quartier correspond alors à cette somme, divisée par la plus grande valeur attribuée à un quartier
 De cette manière, on obtient un score compris entre 0 et 1 pour chaque quartier.    
 """
 
