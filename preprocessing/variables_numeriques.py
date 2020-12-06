@@ -59,7 +59,7 @@ il y a 4 modalités, donc on crée 4 nouvelles variables 'epoque_i' pour 0<=i<=3
     - 'epoque_0' = 1 si 'epoque' = 'Avant 1946', et 0 sinon
     - 'epoque_1' = 1 si 'epoque' =  '1946-1970', et 0 sinon
     - 'epoque_2' = 1 si 'epoque' = '1971-1990', et 0 sinon
-    - 'epoque_.' = 1 si 'epoque' =  'Apres 1990', et 0 sinon
+    - 'epoque_3' = 1 si 'epoque' =  'Apres 1990', et 0 sinon
 
 On utilise encore une fois OneHotEncoder
 """
