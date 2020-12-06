@@ -9,4 +9,10 @@ L'objet de ce projet est donc de répondre à la problématique suivante : Quels
 
 STRUCTURE DU CODE : 
 
-1) data : dossier contenant les codes ayant permis de récolter (recuperation.py) et enrichir (ajout_score_metro.py) les données.   
+1) data : dossier contenant les codes ayant permis de récolter (`recuperation.py`) et enrichir (`ajout_score_metro.py`) les données. 
+
+2) visualization : dossier contenant les codes ayant permis une première analyse descriptive des données, et leur visualisation.  
+
+3) preprocessing : dossier contenant les codes ayant permis de créer une base de données aux variables uniquement numériques (`variables_num.py`) ; et des fonctions utiles au preprocessing de certains modèles (`standardisation.py`)
+
+4) modelisation : dossier contenant les codes des différents modèles utilisés pour répondre à la problématique (`lasso.py` pour la sélection des variables d'intérêt, ...)
