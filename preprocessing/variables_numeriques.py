@@ -6,8 +6,9 @@ import pandas as pd
 import geopandas
 
 #Import des donneés :
-import paths
-donnees = geopandas.read_file(paths.DONNEES_PATH)
+import os
+DONNEES_PATH = os.path.join(os.getcwd()[:-14]+"\\data","donnees_augmentees.geojson")
+donnees = geopandas.read_file(DONNEES_PATH)
 
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import LabelBinarizer
