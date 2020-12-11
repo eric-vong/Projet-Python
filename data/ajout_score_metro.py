@@ -126,7 +126,8 @@ quartiers_freq['fréquentation'] = quartiers_freq['fréquentation']/m
 
 
 """ 
-5. Ajout du score à la base de données et export de la base de données augmentée
+5. Ajout du score à la base de données, en remplaçant les valeurs manquantes par la moyenne des scores des autres quartiers,
+   et export de la base de données augmentée
 """
 
 donnees = gpd.read_file("donnees.geojson")
@@ -134,4 +135,9 @@ donnees = gpd.read_file("donnees.geojson")
 donnees_augmentees = donnees.join(quartiers_freq, on='id_quartier')
 donnees_augmentees.rename(columns={'fréquentation': 'score_metro'}, inplace=True)
 
+#Remplacement des valeurs manquantes :
+score_moy = donnees_augmentees['score_metro'].mean()
+donnees_augmentees['score_metro'][donnees_augmentees['score_metro'].isnull()] = score_moy
+
+#Export des données :
 donnees_augmentees.to_file("donnees_augmentees.geojson", driver="GeoJSON",encoding = 'utf-8')
