@@ -52,14 +52,15 @@ On trace ensuite le nombre de variables sélectionnées par le modèle en foncti
 """
 
 yindex = donnees.columns.get_loc("ref")
-alphas = np.array([0.001,0.01,0.02,0.025,0.05,0.1,0.25,0.5,0.8,1.0])
+alphas = np.array([0.001,0.005]+[i/100 for i in range(1,30)]+[0.5,0.8,1.0])
 
 alpha_for_path, coefs_lasso, _ = lasso_path(np.delete(data, yindex, axis = 1),data[:,yindex],alphas=alphas)
 nb_non_zero = np.apply_along_axis(func1d=np.count_nonzero,arr=coefs_lasso,axis=0)
 
 sns.set_style("whitegrid")
-p = sns.lineplot(y=nb_non_zero, x=alpha_for_path).set(title = r"Number variables and regularization parameter ($\alpha$)", xlabel=r'$\alpha$', ylabel='Nb. de variables')
-#p
+sns.lineplot(y=nb_non_zero, x=alpha_for_path).set(title = r"Nombres de variables sélectionnées par Lasso en fonction de l'hyper paramètre $\alpha$ choisi", xlabel=r'$\alpha$', ylabel='Nombre de variables sélectionnées')
+plt.axvline(0.15, 0,80,color="red",linestyle="--",label = r"$\alpha$=0.15")
+plt.legend(loc='upper right')
 #plt.show()
 
 
@@ -70,10 +71,13 @@ Etape 3)
 Modèle LASSO avec pour hyperparamètre alpha = 0.15
 """
 
-alpha = 0.13
+alpha = 0.15
 
 lasso1 = Lasso(fit_intercept=False,normalize=False, alpha = alpha)
 lasso1.fit(np.delete(data, yindex, axis = 1),data[:,yindex])
 
-#print("Coefficients estimés par modèle LASSO : ",np.abs(lasso1.coef_))
-#print("Colonnes sélectionnées par modèle LASSO : ",donnees.drop("ref", axis = 1).columns[np.abs(lasso1.coef_)>0])
+#print("Coefficients estimés par modèle LASSO avec alpha = "+str(alpha)+":")
+#print(np.abs(lasso1.coef_))
+
+#print("Variables sélectionnées par modèle LASSO avec alpha = "+str(alpha)+":")
+#print(donnees.drop("ref", axis = 1).columns[np.abs(lasso1.coef_)>0])
