@@ -8,6 +8,7 @@ DONNEES_NUM_PATH = os.path.join(PREPROCESSING_DIR,"donnees_num.geojson")
 donnees = geopandas.read_file(DONNEES_NUM_PATH)
 import numpy as np
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 import seaborn as sns
 import sys
 from sklearn.linear_model import LinearRegression
@@ -29,13 +30,27 @@ reglinear = LinearRegression(fit_intercept=True,normalize=False)
 reglinear.fit(np.delete(donnees_meubles, yindex, axis = 1),donnees_meubles[:,yindex])
 reglinear.score(np.delete(donnees_meubles, yindex, axis = 1),donnees_meubles[:,yindex])
 
-print(reglinear.coef_)
-print(reglinear.intercept_) #On s'attendrait normalement à un prix à l'ordonné plus bas et qui monte avec le nombre de pièces
+pieces_meuble,distance_centre_meuble = reglinar.coef_
+ordonnee_meuble = reglinear.intercept_ #Le prix au m^2 descend bien avec le nombre de pièces, rendements marginaux décroissants
 
 reglinear.fit(np.delete(donnees_non_meubles, yindex, axis = 1),donnees_non_meubles[:,yindex])
 reglinear.score(np.delete(donnees_non_meubles, yindex, axis = 1),donnees_non_meubles[:,yindex])
 
-print(reglinear.coef_)
-print(reglinear.intercept_) #Même commentaire
+pieces_non_meuble,distance_centre_non_meuble =reglinear.coef_
+ordonnee_non_meuble = reglinear.intercept_ #Même commentaire
 #Ordonnée à l'origine plus haute pour meublé, c'est ce à quoi on s'attend
 
+###Visualisation de la régression
+ref_meuble,piec_meuble,dist_meuble = donnees_meubles[:,0],donnees_meubles[:,1],donnees_meubles[:,2]
+ref_non_meuble,piec_non_meuble,dist_non_meuble = donnees_non_meubles[:,0],donnees_non_meubles[:,1],donnees_non_meubles[:,2]
+
+#Visualisation des points 
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter(piec_meuble,dist_meuble,ref_meuble,c='red')
+ax.scatter(piec_non_meuble,dist_non_meuble,ref_non_meuble,c='blue')
+ax.set_xlabel('Nombre de pièce')
+ax.set_ylabel('Distance du centre de Paris')
+ax.set_zlabel('Prix du m^2')
+plt.show()
