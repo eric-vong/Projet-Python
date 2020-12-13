@@ -137,8 +137,10 @@ fig.suptitle(r'Modèle kNN avec $k=$'+str(k))
      
 #Scatter plot :
 sns.scatterplot(data=resultats, x='Loyers effectifs',y='Loyers prédis',ax = ax[0])
-identite = [i for i in range(int(resultats['Loyers prédis'].min()),int(resultats['Loyers prédis'].max()))]
-sns.lineplot(x=identite,y=identite,style=True, dashes=[(2,2)],color="red",ax = ax[0])
+
+identite = [i for i in range(int(resultats['Loyers effectifs'].min()),int(resultats['Loyers effectifs'].max()))]
+sns.lineplot(x=identite,y=identite,style=True, color="red",ax = ax[0])
+
 ax[0].set_title("Loyers prédis en fonction des loyers \n effectifs pour le jeu de données test")
         
 #Densité :
