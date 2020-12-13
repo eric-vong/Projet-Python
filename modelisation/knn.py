@@ -49,7 +49,7 @@ xTrain, xTest, yTrain, yTest = train_test_split(X, Y, test_size = 0.2, random_st
 
 
 """
-2) Implémentation d'une fonction qui réalise le modèle kNN, et d'une fonction calculant les indicateurs de performance du modèle
+2) Implémentation d'une fonction qui réalise le modèle kNN
 """
 
 def kNN(xTrain, xTest, yTrain, yTest,k) :
@@ -72,25 +72,8 @@ def kNN(xTrain, xTest, yTrain, yTest,k) :
     resultats = pd.DataFrame({'Loyers effectifs': list(yTest), 'Loyers prédis': list(prediction)})
     return resultats
 
-
-def indicateurs_perf (resultats) :
-    """ 
-    Fonction qui calcule les indicateurs de performance MAE, MSE, RMSE et MAPE à partir de la base de données résultats du modèle knn.
-    
-    ! Modifie la base resultats en rajoutant des colonnes !
-    """   
-    resultats['Ecarts_abs'] = abs(resultats['Loyers prédis']-resultats['Loyers effectifs'])
-    resultats['Ecarts^2'] = resultats['Ecarts_abs']**2
-    resultats['Percentage'] = resultats['Ecarts_abs']/resultats['Loyers effectifs']
-    
-    MAE = resultats['Ecarts_abs'].mean()
-    MSE = resultats['Ecarts^2'].mean()
-    RMSE = MSE**0.5
-    MAPE = resultats['Percentage'].mean()
-
-    return pd.DataFrame({'MAE' : [MAE], 'MSE' : [MSE], 'RMSE' : [RMSE], 'MAPE' : [MAPE]})
-
-
+#import de la fonction indicateurs_perf :
+from indicateurs_perf import indicateurs_perf
 
 
 """
