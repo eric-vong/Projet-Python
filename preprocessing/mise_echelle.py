@@ -1,4 +1,4 @@
-
+import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 
 def mise_echelle(df,mini,maxi) :
@@ -11,4 +11,4 @@ def mise_echelle(df,mini,maxi) :
     
     data = MinMaxScaler(feature_range=(mini, maxi)).fit(df).transform(df)
     
-    return data
+    return pd.DataFrame(data, columns = df.columns)
