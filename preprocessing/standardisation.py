@@ -9,7 +9,7 @@ def standardisation(df) :
     ! df ne doit contenir que des variables numériques !
     """
     
-    data = StandardScaler().fit(df).transform(df.fillna(0))
+    data = StandardScaler().fit(df).transform(df)
     
     return data
 
