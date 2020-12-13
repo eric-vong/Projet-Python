@@ -32,6 +32,7 @@ reglinear.fit(np.delete(donnees_meubles, yindex, axis = 1),donnees_meubles[:,yin
 reglinear.score(np.delete(donnees_meubles, yindex, axis = 1),donnees_meubles[:,yindex])
 
 pieces_meuble,distance_centre_meuble = reglinear.coef_
+print(pieces_meuble,distance_centre_meuble)
 ordonnee_meuble = reglinear.intercept_ #Le prix au m^2 descend bien avec le nombre de pièces, rendements marginaux décroissants
 
 reglinear.fit(np.delete(donnees_non_meubles, yindex, axis = 1),donnees_non_meubles[:,yindex])
