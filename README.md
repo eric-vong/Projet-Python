@@ -14,8 +14,8 @@ STRUCTURE DU CODE :
 
 1) `data` : dossier contenant les codes ayant permis de récolter (`recuperation.py`) et enrichir (`ajout_score_metro.py`) les données.  
 
-2) `preprocessing` : dossier contenant les codes ayant permis de créer une base de données `donnees_num.geojson` aux variables uniquement numériques (`variables_num.py`) ; et des fonctions utiles au preprocessing de certains modèles (`standardisation.py`)
+2) `preprocessing` : dossier contenant les codes ayant permis de créer une base de données `donnees_num.geojson` aux variables uniquement numériques (`variables_num.py`) ; et des fonctions utiles au preprocessing de certains modèles (`standardisation.py` pour la standardisation, `mise_echelle.py` utilisant `MinmaxScaler`)
 
 3) `visualization` : dossier contenant les codes ayant permis une première analyse descriptive des données, et leur visualisation. 
 
-4) `modelisation` : dossier contenant les codes des différents modèles utilisés pour répondre à la problématique (`lasso.py` pour la sélection des variables d'intérêt, ...)
+4) `modelisation` : dossier contenant les codes des différents modèles utilisés pour répondre à la problématique (`lasso.py` pour la sélection des variables d'intérêt, `knn.py` pour le modèle k Nearest Neighbors, ...)
