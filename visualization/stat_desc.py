@@ -6,8 +6,6 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import LabelBinarizer
 
-#On importe les données, puis on transforme la variable textuelle "meuble_text" en variable binaire "meuble_bin"
-#On choisit également de ne garder que la variable ref comme indicateur de prix car max et min sont une transformation affine de celle-ci.
 donnees = gpd.read_file('donnees_augmentees.geojson')
 donnees['meuble_bin'] = 1 - LabelEncoder().fit_transform(donnees['meuble_txt'])
 donnees=donnees.drop(['meuble_txt','max','min','id_quartier'],axis=1)
