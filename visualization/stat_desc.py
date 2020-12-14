@@ -26,14 +26,13 @@ plt.show()
 sns.pairplot(donnees,hue='piece',palette='bright',height=1.9)
 plt.show()
 
-donnees.plot(column = "Prix_m2",cmap = 'coolwarm',legend = True,legend_kwds = {'label':'Prix moyen au mètre carré (€)'},figsize = (10,6))
-#Carte des prix
 donnees[donnees['meuble_bin'] == 1].plot(column = "Prix_m2",cmap = 'coolwarm',legend = True,legend_kwds = {'label':'Prix moyen au mètre carré (€) pour les appartements meublés'},figsize = (9,5))
-#Carte des prix pour les appartements non meublés
-donnees[donnees['meuble_bin'] == 0].plot(column = "Prix_m2",cmap = 'coolwarm',legend = True,legend_kwds = {'label':'Prix moyen au mètre carré (€) pour les appartements non meublés'},figsize = (9,5))
-#Carte des prix pour les appartements non meublés
-donnees.plot(column = "distance_centre_paris",legend = True,legend_kwds = {'label':'Distance au centre de Paris (km)'},figsize = (10,6))
-#Vérification graphique de la distance au centre de Paris
-donnees.plot(column = "piece",cmap = 'coolwarm',legend = True,legend_kwds = {'label':'nombre de piece moyen par appartement par quartier'},figsize = (9,5))
-#Carte du nombre moyen de pièce par appartement dans chaque quartier
+donnees[donnees['meuble_bin'] == 1].plot(column = "piece",cmap = 'coolwarm',legend = True,legend_kwds = {'label':'nombre de piece moyen par appartement meublé par quartier'},figsize = (9,5))
+plt.show()
 
+donnees[donnees['meuble_bin'] == 0].plot(column = "Prix_m2",cmap = 'coolwarm',legend = True,legend_kwds = {'label':'Prix moyen au mètre carré (€) pour les appartements non meublés'},figsize = (9,5))
+donnees[donnees['meuble_bin'] == 0].plot(column = "piece",cmap = 'coolwarm',legend = True,legend_kwds = {'label':'nombre de piece moyen par appartement non meublé par quartier'},figsize = (9,5))
+plt.show()
+
+donnees.plot(column = "distance_centre_paris",legend = True,legend_kwds = {'label':'Distance au centre de Paris (km)'},figsize = (10,6))
+plt.show()
