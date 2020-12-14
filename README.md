@@ -7,7 +7,7 @@ Ce projet Python utilise les données de l'OpenData de Paris sur l'encadrement d
 L'objet de ce projet est donc de répondre à la problématique suivante : 
 **Quels sont les déterminants du loyer d'un bien immobilier parisien ?**
 
-Une première partie de ce projet est consacrée à la récupération des données, et à la création de nouvelles variables explicatives, à partir de la base initiale ou de webscraping. Dans un second temps, nous avons mené une analyse descriptive pour représenter les données et se faire une première idée de la manière dont les variables à notre disposition impactent les loyers parisiens. Enfin, nous avons implémenter des modèles de régressions pour tenter de prédire les loyers parisiens à partir des variables explicatives les plus pertinentes.
+Une première partie de ce projet est consacrée à la récupération des données, et à la création de nouvelles variables explicatives, à partir de la base initiale ou de webscraping. Dans un second temps, nous avons mené une analyse descriptive pour représenter les données, se faire une première idée de la manière dont les variables à notre disposition impactent les loyers parisiens et tenter de trouver les variables les plus pertinentes. Enfin, nous avons essayer d'implémenter des modèles de régressions (régréssion linéaire et modèle kNN) pour tenter de prédire les loyers parisiens à partir des variables explicatives les plus pertinentes.
 
 
 **Structure du code :** 
