@@ -16,6 +16,6 @@ Une première partie de ce projet est consacrée à la récupération des donné
 
 2) `preprocessing` : dossier contenant les codes ayant permis de créer une base de données `donnees_num.geojson` aux variables uniquement numériques (`variables_num.py`) ; et des fonctions utiles au preprocessing de certains modèles (`standardisation.py` pour la standardisation, `mise_echelle.py` utilisant `MinmaxScaler`)
 
-3) `visualization` : dossier contenant les codes ayant permis une première analyse descriptive des données, et leur visualisation. 
+3) `visualization` : dossier contenant les codes ayant permis une première analyse descriptive des données, et leur visualisation (`acp.py` pour la réalisation d'une acp, et `stat_desc.py` pour le reste des statistiques descriptives et de la visualisation). 
 
-4) `modelisation` : dossier contenant les codes des différents modèles utilisés pour répondre à la problématique (`lasso.py` pour la sélection des variables d'intérêt, `regression_lin.py` pour la régression linéaire, `knn.py` pour le modèle k Nearest Neighbors, ...)
+4) `modelisation` : dossier contenant les codes des différents modèles utilisés pour répondre à la problématique (`lasso.py` pour la sélection des variables d'intérêt, `regression_lineaire.py` pour la régression linéaire, `knn.py` pour le modèle k Nearest Neighbors, ...)
