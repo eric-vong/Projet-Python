@@ -39,7 +39,7 @@ principalDf = pd.DataFrame(data = principalComponents, columns = ['principal com
 
 pca.explained_variance_ratio_
 
-#On voit que les 2 dernières variables de l'ACP sont inutiles (contribution de 2.5%), on peut prendre 6 composantes principales en négligeant la 3ème en partant de la fin car elle est inférieure à 1/9
+#On voit que les 2 dernières variables de l'ACP sont inutiles (contribution de 2.5%), on peut prendre 7 composantes principales en négligeant la 3ème en partant de la fin car elle est inférieure à 1/9
 
 ind = np.arange(0, n_components)
 (fig, ax) = plt.subplots(figsize=(8, 6))
